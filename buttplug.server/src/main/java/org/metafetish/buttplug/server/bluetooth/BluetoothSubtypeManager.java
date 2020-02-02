@@ -4,6 +4,7 @@ import org.metafetish.buttplug.server.DeviceSubtypeManager;
 import org.metafetish.buttplug.server.bluetooth.devices.FleshlightLaunchBluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.KiirooBluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.KiirooGen2VibeBluetoothInfo;
+import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev10BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev1BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev2BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev3BluetoothInfo;
@@ -11,6 +12,8 @@ import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev4BluetoothInfo
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev5BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev6BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev7BluetoothInfo;
+import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev8BluetoothInfo;
+import org.metafetish.buttplug.server.bluetooth.devices.LovenseRev9BluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.MagicMotionBluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.VibratissimoBluetoothInfo;
 import org.metafetish.buttplug.server.bluetooth.devices.VorzeA10CycloneInfo;
@@ -36,6 +39,9 @@ public abstract class BluetoothSubtypeManager extends DeviceSubtypeManager {
         builtinDevices.add(new LovenseRev5BluetoothInfo());
         builtinDevices.add(new LovenseRev6BluetoothInfo());
         builtinDevices.add(new LovenseRev7BluetoothInfo());
+        builtinDevices.add(new LovenseRev8BluetoothInfo());
+        builtinDevices.add(new LovenseRev9BluetoothInfo());
+        builtinDevices.add(new LovenseRev10BluetoothInfo());
         builtinDevices.add(new MagicMotionBluetoothInfo());
         builtinDevices.add(new VibratissimoBluetoothInfo());
         builtinDevices.add(new VorzeA10CycloneInfo());

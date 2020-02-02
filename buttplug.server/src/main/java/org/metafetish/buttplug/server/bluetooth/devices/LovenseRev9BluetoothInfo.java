@@ -11,18 +11,13 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class LovenseRev7BluetoothInfo implements IBluetoothDeviceInfo {
+public class LovenseRev9BluetoothInfo implements IBluetoothDeviceInfo {
     public enum Chrs {
         Tx,
         Rx
     }
 
-    private List<String> names = new ArrayList<String>() {{
-        // Lush. Again.
-        add("LVS-S35");
-        // Lush 2
-        add("LVS-Lush122");
-    }};
+    private List<String> names = new ArrayList<String>();
 
     @NonNull
     public List<String> getNames() {
@@ -30,7 +25,7 @@ public class LovenseRev7BluetoothInfo implements IBluetoothDeviceInfo {
     }
 
     private List<UUID> services = new ArrayList<UUID>() {{
-        add(UUID.fromString("53300001-0023-4bd4-bbd5-a6920e4c5653"));
+        add(UUID.fromString("4f300001-0023-4bd4-bbd5-a6920e4c5653"));
     }};
 
     @NonNull
@@ -40,9 +35,9 @@ public class LovenseRev7BluetoothInfo implements IBluetoothDeviceInfo {
 
     private List<UUID> characteristics = new ArrayList<UUID>() {{
         // tx
-        add(UUID.fromString("53300002-0023-4bd4-bbd5-a6920e4c5653"));
+        add(UUID.fromString("4f300002-0023-4bd4-bbd5-a6920e4c5653"));
         // rx
-        add(UUID.fromString("53300003-0023-4bd4-bbd5-a6920e4c5653"));
+        add(UUID.fromString("4f300003-0023-4bd4-bbd5-a6920e4c5653"));
     }};
 
     @NonNull

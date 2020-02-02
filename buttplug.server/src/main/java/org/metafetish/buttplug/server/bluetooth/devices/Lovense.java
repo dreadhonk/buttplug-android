@@ -37,6 +37,7 @@ public class Lovense extends ButtplugBluetoothDevice {
         put("LVS-P36", "Edge");
         put("LVS-Edge37", "Edge");
         put("LVS-Edge38", "Edge");
+        put("LVS-Lush122", "Lush 2");
     }};
 
     private int vibratorCount = 1;
