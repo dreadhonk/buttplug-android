@@ -1,6 +1,6 @@
 package org.metafetish.buttplug.server.bluetooth.devices;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.metafetish.buttplug.core.IButtplugDevice;
 import org.metafetish.buttplug.server.bluetooth.IBluetoothDeviceInfo;

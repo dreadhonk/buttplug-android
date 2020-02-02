@@ -1,7 +1,7 @@
 package org.metafetish.buttplug.components.controls;
 
 import android.os.Handler;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.support.v4.util.LongSparseArray;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -1,6 +1,6 @@
 package org.metafetish.buttplug.components.controls;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.metafetish.buttplug.core.ButtplugEventHandler;
 

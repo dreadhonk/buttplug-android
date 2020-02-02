@@ -1,7 +1,7 @@
 package org.metafetish.buttplug.server.bluetooth;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.metafetish.buttplug.core.ButtplugDevice;
 import org.metafetish.buttplug.core.ButtplugEvent;

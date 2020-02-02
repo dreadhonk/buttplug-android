@@ -1,7 +1,7 @@
 package org.metafetish.buttplug.server.bluetooth.devices;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.common.util.concurrent.SettableFuture;
 

@@ -1,6 +1,6 @@
 package org.metafetish.buttplug.core;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.metafetish.buttplug.core.Messages.MessageAttributes;
 

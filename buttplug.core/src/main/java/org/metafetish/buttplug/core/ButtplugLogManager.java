@@ -1,7 +1,7 @@
 package org.metafetish.buttplug.core;
 
-import android.support.annotation.NonNull;
-import android.support.v4.util.Pair;
+import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
 
 import org.metafetish.buttplug.core.Messages.Log;
 

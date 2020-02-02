@@ -1,6 +1,6 @@
 package org.metafetish.buttplug.core.Events;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import org.metafetish.buttplug.core.ButtplugEvent;
 

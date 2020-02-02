@@ -3,7 +3,7 @@ package org.metafetish.buttplug.components.websocketserver;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Pair;
 
 import org.java_websocket.WebSocket;
