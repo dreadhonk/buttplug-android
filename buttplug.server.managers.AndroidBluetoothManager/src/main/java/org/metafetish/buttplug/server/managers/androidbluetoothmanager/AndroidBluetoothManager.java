@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.ParcelUuid;
 import android.support.annotation.NonNull;
@@ -30,6 +32,26 @@ public class AndroidBluetoothManager extends BluetoothSubtypeManager {
     private boolean scanning;
 
     private BluetoothAdapter bluetoothAdapter;
+
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Discovery has found a device. Get the BluetoothDevice
+                // object and its info from the Intent.
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                bpLogger.trace("received non-LE device: "+device.getName()+" starting SDP");
+                if (!device.fetchUuidsWithSdp()) {
+                    bpLogger.trace("failed to start SDP!");
+                }
+            } else if (BluetoothDevice.ACTION_UUID.equals(action)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                bpLogger.trace("finished SDP for device: "+device.getName());
+                AndroidBluetoothManager.this.leScanCallback.onLeScan(device, 0, null);
+            }
+        }
+    };
 
     @NonNull
     private List<AndroidBluetoothDeviceFactory> deviceFactories = new ArrayList<>();
@@ -97,6 +119,11 @@ public class AndroidBluetoothManager extends BluetoothSubtypeManager {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             ((Activity) context).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
+
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        filter.addAction(BluetoothDevice.ACTION_UUID);
+        // TODO: we need to unregister this in some way ...
+        context.registerReceiver(receiver, filter);
     }
 
     private BluetoothAdapter.LeScanCallback leScanCallback = new BluetoothAdapter.LeScanCallback() {
@@ -135,6 +162,8 @@ public class AndroidBluetoothManager extends BluetoothSubtypeManager {
                     .deviceFactories) {
                 if (factory.mayBeDevice(advertName, advertGUIDs)) {
                     factories.add(factory);
+                } else {
+                    bpLogger.trace(String.format("Factory %s rejected device %s", factory, advertName));
                 }
             }
             if (factories.size() != 1) {
@@ -165,8 +194,12 @@ public class AndroidBluetoothManager extends BluetoothSubtypeManager {
         this.bpLogger.trace("Starting BLE Scanning");
         if (!this.scanning) {
             this.scanning = true;
-            this.bluetoothAdapter.startLeScan(this.leScanCallback);
-            this.bpLogger.trace("Started BLE Scanning");
+            this.bluetoothAdapter.startDiscovery();
+            if (this.bluetoothAdapter.startLeScan(this.leScanCallback)) {
+                this.bpLogger.trace("Started BLE Scanning");
+            } else {
+                this.bpLogger.trace("BLE scanning failed to start!");
+            }
         } else {
             this.bpLogger.trace("BLE already Scanning");
         }
